@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  nextjs:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: production
+    ports:
+      - 8000:8000

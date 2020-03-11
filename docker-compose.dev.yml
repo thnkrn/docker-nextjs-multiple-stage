@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  nextjs:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: development
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
