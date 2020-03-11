@@ -5,7 +5,7 @@
   ],
   "setupFiles": ["./setupJest.js"],
   "moduleFileExtensions": ["js", "json"],
-    "coverageDirectory": "./coverage/",
+  "coverageDirectory": "./coverage/",
   "collectCoverage": true,
   "collectCoverageFrom": ["**/pages/**/*.{js,jsx}"]
 }
