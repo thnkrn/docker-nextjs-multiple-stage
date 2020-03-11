@@ -9,7 +9,8 @@
     "start": "node ./server.js",
     "test": "LOG_LEVEL=warn npm run test:parallel",
     "test:sequential": "NODE_ENV=testing jest -i",
-    "test:parallel": "NODE_ENV=testing jest"
+    "test:parallel": "NODE_ENV=testing jest",
+    "test:coverage": "NODE_ENV=testing jest --coverage"
   },
   "keywords": [],
   "author": "",
