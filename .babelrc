@@ -1,0 +1,9 @@
+{
+  "env": {
+    "testing": {
+      "plugins": [["styled-components", { "ssr": false, "displayName": false }]]
+    }
+  },
+  "presets": ["next/babel"],
+  "plugins": [["styled-components", { "ssr": true }]]
+}
