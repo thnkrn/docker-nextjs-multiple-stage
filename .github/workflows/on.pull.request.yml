@@ -11,6 +11,13 @@ jobs:
         run: |
           export DOCKER_BUILDKIT=1
           docker build -t testing-image --target=test .
-      - name: Run docker image for testing
+      - name: Run docker image and upload to codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-          docker run testing-image npm test
+          mkdir "${PWD}/coverage"
+          chmod -R 777 "${PWD}/coverage"
+          docker run \
+          -v "${PWD}"/coverage:/opt/app/coverage \
+          -i --rm testing-image npm test:coverage
+          bash <(curl -s https://codecov.io/bash)
