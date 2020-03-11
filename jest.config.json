@@ -4,5 +4,8 @@
     "<rootDir>/node_modules/snapshot-diff/serializer.js"
   ],
   "setupFiles": ["./setupJest.js"],
-  "moduleFileExtensions": ["js", "json"]
+  "moduleFileExtensions": ["js", "json"],
+    "coverageDirectory": "./coverage/",
+  "collectCoverage": true,
+  "collectCoverageFrom": ["**/pages/**/*.{js,jsx}"]
 }
