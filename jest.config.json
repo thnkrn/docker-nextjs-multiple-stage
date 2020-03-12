@@ -5,6 +5,7 @@
   ],
   "setupFiles": ["./setupJest.js"],
   "moduleFileExtensions": ["js", "json"],
+  "testPathIgnorePatterns": ["/node_modules/", "/coverage/"]
   "coverageDirectory": "./coverage/",
   "collectCoverage": true,
   "collectCoverageFrom": ["**/pages/**/*.{js,jsx}"]

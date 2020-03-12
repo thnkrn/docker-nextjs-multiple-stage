@@ -40,9 +40,6 @@ COPY ./ ./
 
 RUN npm install --only=development
 
-# Run CMD For testing
-RUN npm run test
-
 
 # Builder stage
 # Using image from base as builder
