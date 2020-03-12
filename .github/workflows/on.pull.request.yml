@@ -1,16 +1,31 @@
-name: run test on pr
-on: 
+name: run test on pull request
+
+env:
+  IMAGE_NAME: docker-nextjs-multiple-stage
+
+on:
   pull_request:
     branches: master
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
+
       - name: Build docker image for testing
+        env:
+          DOCKER_BUILDKIT: 1
+        run: docker build --target test -t=$IMAGE_NAME .
+
+      - name: Run docker image and upload to codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-          export DOCKER_BUILDKIT=1
-          docker build -t testing-image --target=test .
-      - name: Run docker image for testing
-        run: |
-          docker run testing-image npm test
+          mkdir "${PWD}/coverage"
+          chmod -R 777 "${PWD}/coverage"
+          docker run \
+          -v "${PWD}"/coverage:/opt/app/coverage \
+          -i --rm $IMAGE_NAME npm test
+          bash <(curl -s https://codecov.io/bash)
